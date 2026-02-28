@@ -1,0 +1,141 @@
+/* DropdownMenu/styles.module.css */
+
+.content {
+  z-index: 50;
+  min-width: 8rem;
+  overflow: hidden;
+  border-radius: 0.375rem; /* rounded-md */
+  padding: 0.25rem; /* p-1 */
+
+  /* Blue Tech Glass Effect */
+  background: rgba(10, 15, 36, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  color: #f8fafc; /* Branco Gelo */
+
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+}
+
+.contentScrollable {
+  max-height: var(--radix-dropdown-menu-content-available-height);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Animações Radix */
+.content[data-state="open"] {
+  animation: dropdownShow 0.15s ease-out forwards;
+}
+.content[data-state="closed"] {
+  animation: dropdownHide 0.15s ease-in forwards;
+}
+
+@keyframes dropdownShow {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dropdownHide {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+/* Itens do Menu */
+.item {
+  position: relative;
+  display: flex;
+  cursor: default;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.125rem; /* rounded-sm */
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+  user-select: none;
+  transition: background-color 0.15s ease;
+  color: #f8fafc;
+}
+
+/* Estado de Foco (Hover) - Usando o Ciano Tech */
+.item:focus,
+.item[data-state="open"] {
+  background-color: rgba(6, 182, 212, 0.15);
+  color: #f8fafc;
+}
+
+.item[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.item[data-inset] {
+  padding-left: 2rem;
+}
+
+/* Variante Destrutiva */
+.item[data-variant="destructive"] {
+  color: #ef4444; /* Vermelho Coral */
+}
+
+.item[data-variant="destructive"]:focus {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+/* Ícones dentro dos itens */
+.item svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: #94a3b8; /* Cinza Azulado */
+}
+
+.item:focus svg {
+  color: #06b6d4; /* Ciano no foco */
+}
+
+/* Checkbox/Radio Indicators */
+.indicatorWrapper {
+  position: absolute;
+  left: 0.5rem;
+  display: flex;
+  height: 0.875rem;
+  width: 0.875rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Separador e Atalhos */
+.separator {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 0.25rem -0.25rem;
+}
+
+.shortcut {
+  margin-left: auto;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+}
+
+.label {
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
