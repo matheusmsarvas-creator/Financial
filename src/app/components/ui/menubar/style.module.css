@@ -1,0 +1,145 @@
+/* Menubar/styles.module.css */
+
+.menubar {
+  display: flex;
+  height: 2.25rem; /* h-9 */
+  align-items: center;
+  gap: 0.25rem; /* gap-1 */
+  padding: 0.25rem; /* p-1 */
+  border-radius: 0.375rem; /* rounded-md */
+
+  /* Glassmorphism sutil para a barra */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.trigger {
+  display: flex;
+  cursor: default;
+  align-items: center;
+  border-radius: 0.125rem; /* rounded-sm */
+  padding: 0.25rem 0.5rem; /* px-2 py-1 */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500;
+  outline: none;
+  user-select: none;
+  color: #f8fafc;
+  transition: background-color 0.15s ease;
+}
+
+/* Foco e Estado Aberto */
+.trigger:focus,
+.trigger[data-state="open"] {
+  background-color: rgba(6, 182, 212, 0.15); /* Cyan Tech */
+  color: #f8fafc;
+}
+
+/* Painel de Conteúdo (Menus) */
+.content {
+  z-index: 50;
+  min-width: 12rem;
+  overflow: hidden;
+  border-radius: 0.375rem; /* rounded-md */
+  padding: 0.25rem; /* p-1 */
+
+  /* Estilo Glass Escuro */
+  background: rgba(10, 15, 36, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  color: #f8fafc;
+
+  transform-origin: var(--radix-menubar-content-transform-origin);
+}
+
+/* Animações */
+.content[data-state="open"] {
+  animation: menubarShow 0.15s ease-out forwards;
+}
+
+@keyframes menubarShow {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Itens do Menu */
+.item {
+  position: relative;
+  display: flex;
+  cursor: default;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.125rem;
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+  user-select: none;
+  transition: background-color 0.15s ease;
+}
+
+.item:focus,
+.item[data-state="open"] {
+  background-color: rgba(6, 182, 212, 0.2);
+  color: #f8fafc;
+}
+
+.item[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Variante Destrutiva */
+.item[data-variant="destructive"] {
+  color: #ef4444;
+}
+
+.item[data-variant="destructive"]:focus {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.item svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: #94a3b8;
+}
+
+/* Utilitários Internos */
+.separator {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 0.25rem -0.25rem;
+}
+
+.shortcut {
+  margin-left: auto;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+}
+
+.label {
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.indicatorWrapper {
+  position: absolute;
+  left: 0.5rem;
+  display: flex;
+  height: 0.875rem;
+  width: 0.875rem;
+  align-items: center;
+  justify-content: center;
+}

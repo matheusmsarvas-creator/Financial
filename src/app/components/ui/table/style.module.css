@@ -1,0 +1,93 @@
+/* Table/styles.module.css */
+
+.container {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  /* Opcional: Adicione um leve fundo de vidro ao container se a tabela for isolada */
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  caption-side: bottom;
+  font-size: 0.875rem; /* text-sm */
+  color: #f8fafc; /* Branco Gelo */
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.header tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.body tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.body tr:last-child {
+  border-bottom: 0;
+}
+
+/* Efeito de Destaque na Linha (Hover) */
+.body tr:hover {
+  background-color: rgba(6, 182, 212, 0.08); /* Cyan Tech suave */
+  box-shadow: inset 2px 0 0 #06b6d4; /* Linha indicadora lateral */
+}
+
+.footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.02);
+  font-weight: 500;
+}
+
+.head {
+  height: 2.5rem; /* h-10 */
+  padding: 0 0.5rem;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 600;
+  color: #94a3b8; /* Cinza Azulado para os títulos */
+  white-space: nowrap;
+}
+
+.cell {
+  padding: 0.75rem 0.5rem;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.caption {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #64748b; /* Muted */
+}
+/* Table/styles.module.css */
+
+/* ... (mantenha o que já tinha e adicione/ajuste a .row) */
+
+.row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.row:hover {
+  background-color: rgba(6, 182, 212, 0.08); /* Efeito Hover Ciano */
+  box-shadow: inset 2px 0 0 #06b6d4;
+}
+
+.row[data-state="selected"] {
+  background-color: rgba(6, 182, 212, 0.15);
+}

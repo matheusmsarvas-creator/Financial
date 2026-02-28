@@ -1,0 +1,89 @@
+/* Carousel/styles.module.css */
+
+.root {
+  position: relative;
+}
+
+.viewport {
+  overflow: hidden;
+}
+
+/* Container que segura todos os itens */
+.container {
+  display: flex;
+}
+
+.containerHorizontal {
+  margin-left: -1rem; /* -ml-4 */
+}
+
+.containerVertical {
+  flex-direction: column;
+  margin-top: -1rem; /* -mt-4 */
+}
+
+/* Cada item individual do carrossel */
+.item {
+  min-width: 0;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 100%;
+}
+
+.itemHorizontal {
+  padding-left: 1rem; /* pl-4 */
+}
+
+.itemVertical {
+  padding-top: 1rem; /* pt-4 */
+}
+
+/* ====================
+   BOTÕES DE NAVEGAÇÃO
+   ==================== */
+
+.buttonBase {
+  position: absolute;
+  width: 2rem; /* size-8 */
+  height: 2rem;
+  border-radius: 9999px; /* rounded-full */
+}
+
+/* Posições para o botão Previous (Voltar) */
+.prevHorizontal {
+  top: 50%;
+  left: -3rem; /* -left-12 */
+  transform: translateY(-50%);
+}
+
+.prevVertical {
+  top: -3rem; /* -top-12 */
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+/* Posições para o botão Next (Avançar) */
+.nextHorizontal {
+  top: 50%;
+  right: -3rem; /* -right-12 */
+  transform: translateY(-50%);
+}
+
+.nextVertical {
+  bottom: -3rem; /* -bottom-12 */
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+/* Acessibilidade */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

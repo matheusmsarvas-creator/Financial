@@ -1,0 +1,52 @@
+/* Switch/styles.module.css */
+
+.root {
+  display: inline-flex;
+  height: 1.25rem; /* h-5 */
+  width: 2.25rem; /* w-9 */
+  cursor: pointer;
+  align-items: center;
+  border-radius: 9999px; /* rounded-full */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05); /* Vidro sutil */
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+/* Estado Ligado (Checked) */
+.root[data-state="checked"] {
+  background-color: rgba(6, 182, 212, 0.2); /* Fundo ciano translúcido */
+  border-color: #06b6d4;
+}
+
+.root:focus-visible {
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.3);
+}
+
+.root:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* O "Polegar" (Thumb) */
+.thumb {
+  pointer-events: none;
+  display: block;
+  height: 1rem; /* size-4 */
+  width: 1rem;
+  border-radius: 9999px;
+  background-color: #f8fafc; /* Branco Gelo */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 0.2s,
+    background-color 0.2s,
+    box-shadow 0.2s;
+  transform: translateX(0.125rem); /* Margem inicial */
+}
+
+/* Movimento do Thumb ao ligar */
+.root[data-state="checked"] .thumb {
+  transform: translateX(1.125rem);
+  background-color: #06b6d4; /* Cor neon ao ativar */
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.8);
+}

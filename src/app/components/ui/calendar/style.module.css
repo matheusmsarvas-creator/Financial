@@ -1,0 +1,181 @@
+/* Calendar/styles.module.css */
+
+.root {
+  padding: 0.75rem;
+  color: #f8fafc; /* Branco Gelo */
+}
+
+.months {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .months {
+    flex-direction: row;
+  }
+}
+
+.month {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding-top: 0.25rem;
+}
+
+.caption_label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav_button {
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: transparent;
+  padding: 0;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.nav_button:hover {
+  opacity: 1;
+}
+
+.nav_button_previous {
+  position: absolute;
+  left: 0.25rem;
+}
+
+.nav_button_next {
+  position: absolute;
+  right: 0.25rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.head_row {
+  display: flex;
+}
+
+.head_cell {
+  color: #94a3b8; /* Cinza Azulado */
+  border-radius: 0.375rem;
+  width: 2rem;
+  font-weight: 400;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Célula base */
+.cell {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.cell:focus-within {
+  position: relative;
+  z-index: 20;
+}
+
+/* Modificadores de Range (Seleção de Período) usando :has */
+.cell:has([aria-selected]) {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.05
+  ); /* Fundo de vidro para a trilha */
+}
+
+.cell:has(.day_range_start) {
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+.cell:has(.day_range_end) {
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
+
+/* Dia Padrão */
+.day {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  font-weight: 400;
+}
+
+.day[aria-selected="true"] {
+  opacity: 1;
+}
+
+/* Estados específicos dos dias */
+.day_selected {
+  background-color: #3b82f6 !important; /* Azul Royal */
+  color: #ffffff !important;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); /* Brilho neon suave */
+}
+
+.day_selected:hover,
+.day_selected:focus {
+  background-color: #2563eb !important;
+}
+
+.day_today {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  font-weight: bold;
+}
+
+.day_outside {
+  color: #94a3b8;
+  opacity: 0.5;
+}
+
+.day_disabled {
+  color: #94a3b8;
+  opacity: 0.3;
+}
+
+.day_range_middle {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #f8fafc !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.day_hidden {
+  visibility: hidden;
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+}

@@ -1,0 +1,136 @@
+/* AlertDialog/styles.module.css */
+
+/* Fundo escuro atrás do modal */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px); /* Leve desfoque no fundo do app inteiro */
+}
+
+.overlay[data-state="open"] {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.overlay[data-state="closed"] {
+  animation: fadeOut 0.2s ease-in forwards;
+}
+
+/* O Modal com efeito Glassmorphism */
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  display: grid;
+  width: 100%;
+  max-width: calc(100% - 2rem);
+  gap: 1rem;
+  padding: 1.5rem;
+
+  /* Efeito Vidro "Blue Tech" */
+  background: rgba(10, 15, 36, 0.75); /* Azul Meia-Noite translúcido */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Reflexo da borda */
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 640px) {
+  .content {
+    max-width: 32rem; /* sm:max-w-lg */
+  }
+}
+
+.content[data-state="open"] {
+  animation: contentShow 0.2s ease-out forwards;
+}
+
+.content[data-state="closed"] {
+  animation: contentHide 0.2s ease-in forwards;
+}
+
+/* Estrutura Interna */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .header {
+    text-align: left;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .footer {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+/* Textos */
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #f8fafc; /* Branco Gelo */
+}
+
+.description {
+  font-size: 0.875rem;
+  color: #94a3b8; /* Cinza Azulado */
+}
+
+/* Animações (Keyframes) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes contentHide {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.95);
+  }
+}

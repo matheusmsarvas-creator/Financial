@@ -1,0 +1,75 @@
+/* Alert/styles.module.css */
+
+.alert {
+  position: relative;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  display: grid;
+  grid-template-columns: 0 1fr;
+  row-gap: 0.125rem;
+  align-items: flex-start;
+
+  /* Efeito Vidro Base */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Se o Alerta tiver um ícone SVG, ajustamos o grid */
+.alert:has(> svg) {
+  grid-template-columns: 1rem 1fr;
+  column-gap: 0.75rem;
+}
+
+/* Estilização do ícone */
+.alert > svg {
+  width: 1rem;
+  height: 1rem;
+  transform: translateY(0.125rem);
+  color: currentColor;
+}
+
+/* Variantes */
+.default {
+  background: rgba(255, 255, 255, 0.05); /* Fundo translúcido */
+  color: #f8fafc; /* Branco Gelo */
+}
+
+.destructive {
+  background: rgba(239, 68, 68, 0.1); /* Fundo Coral bem suave */
+  border-color: rgba(239, 68, 68, 0.3); /* Borda Coral */
+  color: #ef4444; /* Vermelho Coral */
+}
+
+.destructive [data-slot="alert-description"] {
+  color: rgba(239, 68, 68, 0.9);
+}
+
+/* Título */
+.title {
+  grid-column-start: 2;
+  min-height: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  /* Line clamp para truncar textos muito longos com reticências */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Descrição */
+.description {
+  grid-column-start: 2;
+  display: grid;
+  justify-items: flex-start;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: #94a3b8; /* Cinza Azulado */
+}
+
+.description p {
+  line-height: 1.625;
+}

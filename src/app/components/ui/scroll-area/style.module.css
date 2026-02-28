@@ -1,0 +1,80 @@
+/* ScrollArea/styles.module.css */
+
+.root {
+  position: relative;
+  overflow: hidden;
+}
+
+.viewport {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  outline: none;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Foco para acessibilidade */
+.viewport:focus-visible {
+  box-shadow: inset 0 0 0 2px rgba(6, 182, 212, 0.3);
+}
+
+.scrollbar {
+  display: flex;
+  user-select: none;
+  touch-action: none;
+  padding: 2px;
+  background: transparent;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* Aparece mais quando o mouse entra na área */
+.scrollbar:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.scrollbar[orientation="vertical"] {
+  width: 10px; /* w-2.5 */
+  height: 100%;
+  border-left: 1px solid transparent;
+}
+
+.scrollbar[orientation="horizontal"] {
+  height: 10px; /* h-2.5 */
+  flex-direction: column;
+  border-top: 1px solid transparent;
+}
+
+/* O marcador (Thumb) */
+.thumb {
+  flex: 1;
+  border-radius: 9999px;
+  background-color: rgba(148, 163, 184, 0.3); /* Cinza azulado discreto */
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+/* Efeito Neon no Hover do Thumb */
+.thumb:hover,
+.thumb:active {
+  background-color: #06b6d4; /* Ciano Tech */
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+}
+
+/* Aumenta a área de clique do thumb sem aumentar o visual */
+.thumb::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  min-width: 44px;
+  min-height: 44px;
+  transform: translate(-50%, -50%);
+}
+
+.corner {
+  background: transparent;
+}

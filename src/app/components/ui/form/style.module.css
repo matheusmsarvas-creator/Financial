@@ -1,0 +1,29 @@
+/* Form/styles.module.css */
+
+.item {
+  display: grid;
+  gap: 0.5rem; /* gap-2 */
+}
+
+.label {
+  /* O FormLabel usa o componente Label internamente, 
+     mas controlamos o estado de erro aqui */
+  transition: color 0.2s ease;
+}
+
+.label[data-error="true"] {
+  color: #ef4444; /* Vermelho Coral para Erro */
+}
+
+.description {
+  font-size: 0.875rem; /* text-sm */
+  color: #94a3b8; /* Cinza Azulado */
+  margin: 0;
+}
+
+.message {
+  font-size: 0.875rem; /* text-sm */
+  color: #ef4444; /* Vermelho Coral */
+  font-weight: 500;
+  margin: 0;
+}
