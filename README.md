@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
   # Financial Management App
 
@@ -9,3 +10,6 @@
 
   Run `npm run dev` to start the development server.
   
+=======
+# Financial
+>>>>>>> c9fd9ef36ef1a0d3edb95d9bb52823c7d92c8ef3
