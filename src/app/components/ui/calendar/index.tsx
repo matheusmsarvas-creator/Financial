@@ -5,7 +5,7 @@ import * as React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { DayPicker } from "react-day-picker";
 
-import { cn } from "../../utils"; // Ajuste o caminho conforme necessário
+import { cn } from "../utils"; // Ajuste o caminho conforme necessário
 import { buttonVariants } from "../button"; // Certifique-se de que a rota aponta para o Button refatorado
 import styles from "./styles.module.css";
 

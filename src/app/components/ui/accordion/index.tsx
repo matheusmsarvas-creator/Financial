@@ -5,7 +5,7 @@ import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "lucide-react";
 
-import { cn } from "../../utils"; // Ajuste este caminho conforme a estrutura da sua pasta
+import { cn } from "../utils"; // Ajuste este caminho conforme a estrutura da sua pasta
 import styles from "./styles.module.css";
 
 function Accordion({

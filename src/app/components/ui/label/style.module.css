@@ -1,0 +1,26 @@
+/* Label/styles.module.css */
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* gap-2 */
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1;
+  font-weight: 500;
+  user-select: none;
+  color: #f8fafc; /* Branco Gelo */
+  transition: opacity 0.2s ease;
+}
+
+/* Estado desabilitado vindo de um componente "Peer" (como o Input) */
+:global(.peer):disabled ~ .label,
+.label[data-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Estado desabilitado vindo de um grupo pai (como um Fieldset ou FormItem) */
+:global(.group)[data-disabled="true"] .label {
+  pointer-events: none;
+  opacity: 0.5;
+}

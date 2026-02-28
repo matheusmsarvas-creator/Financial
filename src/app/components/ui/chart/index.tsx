@@ -4,7 +4,7 @@
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
 
-import { cn } from "../../utils"; // Ajuste o caminho do utils
+import { cn } from "../utils"; // Ajuste o caminho do utils
 import styles from "./styles.module.css";
 
 // Format: { THEME_NAME: CSS_SELECTOR }

@@ -4,7 +4,7 @@
 import * as React from "react";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 
-import { cn } from "../../utils"; // Ajuste a rota se necessário
+import { cn } from "../utils"; // Ajuste a rota se necessário
 import styles from "./styles.module.css";
 
 function Avatar({

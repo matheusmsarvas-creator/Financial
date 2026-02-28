@@ -1,9 +1,21 @@
-import React, { useMemo } from 'react';
-import { GlassCard } from '../components/GlassCard';
-import { useFinance } from '../context/FinanceContext';
-import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { TrendingUp, TrendingDown, Clock, Wallet } from 'lucide-react';
-import { motion } from 'motion/react';
+import React, { useMemo } from "react";
+import { GlassCard } from "../components/GlassCard";
+import { useFinance } from "../context/FinanceContext";
+import {
+  AreaChart,
+  Area,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+} from "recharts";
+import { TrendingUp, TrendingDown, Clock, Wallet } from "lucide-react";
+import { motion } from "motion/react";
 
 export function Dashboard() {
   const { transactions, budgets } = useFinance();
@@ -11,19 +23,19 @@ export function Dashboard() {
   const stats = useMemo(() => {
     const currentMonth = new Date().getMonth();
     const monthTransactions = transactions.filter(
-      (t) => new Date(t.date).getMonth() === currentMonth
+      (t) => new Date(t.date).getMonth() === currentMonth,
     );
 
     const income = monthTransactions
-      .filter((t) => t.type === 'income')
+      .filter((t) => t.type === "income")
       .reduce((sum, t) => sum + t.amount, 0);
 
     const expenses = monthTransactions
-      .filter((t) => t.type === 'expense' && !t.isPending)
+      .filter((t) => t.type === "expense" && !t.isPending)
       .reduce((sum, t) => sum + t.amount, 0);
 
     const pending = monthTransactions
-      .filter((t) => t.type === 'expense' && t.isPending)
+      .filter((t) => t.type === "expense" && t.isPending)
       .reduce((sum, t) => sum + t.amount, 0);
 
     return {
@@ -35,7 +47,7 @@ export function Dashboard() {
   }, [transactions]);
 
   const monthlyData = useMemo(() => {
-    const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'];
+    const months = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"];
     return months.map((month, index) => ({
       month,
       receitas: Math.random() * 3000 + 2000,
@@ -58,25 +70,28 @@ export function Dashboard() {
   }, [transactions]);
 
   return (
-    <div className="min-h-screen p-6 relative overflow-hidden" style={{ background: '#0A0F24' }}>
+    <div
+      className="min-h-screen p-6 relative overflow-hidden"
+      style={{ background: "#0A0F24" }}
+    >
       {/* Animated background effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className="absolute w-96 h-96 rounded-full opacity-20 blur-3xl"
           style={{
-            background: 'radial-gradient(circle, #10B981 0%, transparent 70%)',
-            top: '5%',
-            right: '5%',
-            animation: 'pulse 6s ease-in-out infinite',
+            background: "radial-gradient(circle, #10B981 0%, transparent 70%)",
+            top: "5%",
+            right: "5%",
+            animation: "pulse 6s ease-in-out infinite",
           }}
         />
         <div
           className="absolute w-96 h-96 rounded-full opacity-20 blur-3xl"
           style={{
-            background: 'radial-gradient(circle, #8B5CF6 0%, transparent 70%)',
-            bottom: '5%',
-            left: '5%',
-            animation: 'pulse 6s ease-in-out infinite 3s',
+            background: "radial-gradient(circle, #8B5CF6 0%, transparent 70%)",
+            bottom: "5%",
+            left: "5%",
+            animation: "pulse 6s ease-in-out infinite 3s",
           }}
         />
       </div>
@@ -89,10 +104,20 @@ export function Dashboard() {
       >
         {/* Header */}
         <div className="mb-8">
-          <h1 className="mb-2" style={{ color: '#F8FAFC', fontSize: '32px', fontWeight: 700, textShadow: '0 0 30px rgba(59, 130, 246, 0.3)' }}>
+          <h1
+            className="mb-2"
+            style={{
+              color: "#F8FAFC",
+              fontSize: "32px",
+              fontWeight: 700,
+              textShadow: "0 0 30px rgba(59, 130, 246, 0.3)",
+            }}
+          >
             Dashboard Financeiro
           </h1>
-          <p style={{ color: '#94A3B8' }}>Visão geral das suas finanças em Fevereiro 2026</p>
+          <p style={{ color: "#94A3B8" }}>
+            Visão geral das suas finanças em Fevereiro 2026
+          </p>
         </div>
 
         {/* Stats Grid */}
@@ -102,24 +127,41 @@ export function Dashboard() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
           >
-            <GlassCard variant="strong" className="p-6 relative overflow-hidden">
+            <GlassCard
+              variant="strong"
+              className="p-6 relative overflow-hidden"
+            >
               <div
                 className="absolute top-0 right-0 w-32 h-32 opacity-10"
                 style={{
-                  background: 'radial-gradient(circle, #06B6D4 0%, transparent 70%)',
-                  filter: 'blur(20px)',
+                  background:
+                    "radial-gradient(circle, #06B6D4 0%, transparent 70%)",
+                  filter: "blur(20px)",
                 }}
               />
               <div className="flex items-center justify-between mb-2">
-                <p style={{ color: '#94A3B8' }}>Saldo Atual</p>
-                <Wallet className="w-5 h-5" style={{ color: '#06B6D4' }} />
+                <p style={{ color: "#94A3B8" }}>Saldo Atual</p>
+                <Wallet className="w-5 h-5" style={{ color: "#06B6D4" }} />
               </div>
-              <p className="mb-1" style={{ color: '#F8FAFC', fontSize: '32px', fontWeight: 700, textShadow: '0 0 20px rgba(6, 182, 212, 0.5)' }}>
-                R$ {stats.balance.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+              <p
+                className="mb-1"
+                style={{
+                  color: "#F8FAFC",
+                  fontSize: "32px",
+                  fontWeight: 700,
+                  textShadow: "0 0 20px rgba(6, 182, 212, 0.5)",
+                }}
+              >
+                R${" "}
+                {stats.balance.toLocaleString("pt-BR", {
+                  minimumFractionDigits: 2,
+                })}
               </p>
               <div className="flex items-center gap-1">
-                <TrendingUp className="w-4 h-4" style={{ color: '#10B981' }} />
-                <span style={{ color: '#10B981', fontSize: '14px' }}>+12.5% do mês passado</span>
+                <TrendingUp className="w-4 h-4" style={{ color: "#10B981" }} />
+                <span style={{ color: "#10B981", fontSize: "14px" }}>
+                  +12.5% do mês passado
+                </span>
               </div>
             </GlassCard>
           </motion.div>
@@ -129,22 +171,39 @@ export function Dashboard() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <GlassCard variant="strong" className="p-6 relative overflow-hidden">
+            <GlassCard
+              variant="strong"
+              className="p-6 relative overflow-hidden"
+            >
               <div
                 className="absolute top-0 right-0 w-32 h-32 opacity-10"
                 style={{
-                  background: 'radial-gradient(circle, #10B981 0%, transparent 70%)',
-                  filter: 'blur(20px)',
+                  background:
+                    "radial-gradient(circle, #10B981 0%, transparent 70%)",
+                  filter: "blur(20px)",
                 }}
               />
               <div className="flex items-center justify-between mb-2">
-                <p style={{ color: '#94A3B8' }}>Receitas</p>
-                <TrendingUp className="w-5 h-5" style={{ color: '#10B981' }} />
+                <p style={{ color: "#94A3B8" }}>Receitas</p>
+                <TrendingUp className="w-5 h-5" style={{ color: "#10B981" }} />
               </div>
-              <p className="mb-1" style={{ color: '#F8FAFC', fontSize: '32px', fontWeight: 700, textShadow: '0 0 20px rgba(16, 185, 129, 0.5)' }}>
-                R$ {stats.income.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+              <p
+                className="mb-1"
+                style={{
+                  color: "#F8FAFC",
+                  fontSize: "32px",
+                  fontWeight: 700,
+                  textShadow: "0 0 20px rgba(16, 185, 129, 0.5)",
+                }}
+              >
+                R${" "}
+                {stats.income.toLocaleString("pt-BR", {
+                  minimumFractionDigits: 2,
+                })}
               </p>
-              <span style={{ color: '#10B981', fontSize: '14px' }}>Este mês</span>
+              <span style={{ color: "#10B981", fontSize: "14px" }}>
+                Este mês
+              </span>
             </GlassCard>
           </motion.div>
 
@@ -153,22 +212,42 @@ export function Dashboard() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
           >
-            <GlassCard variant="strong" className="p-6 relative overflow-hidden">
+            <GlassCard
+              variant="strong"
+              className="p-6 relative overflow-hidden"
+            >
               <div
                 className="absolute top-0 right-0 w-32 h-32 opacity-10"
                 style={{
-                  background: 'radial-gradient(circle, #EF4444 0%, transparent 70%)',
-                  filter: 'blur(20px)',
+                  background:
+                    "radial-gradient(circle, #EF4444 0%, transparent 70%)",
+                  filter: "blur(20px)",
                 }}
               />
               <div className="flex items-center justify-between mb-2">
-                <p style={{ color: '#94A3B8' }}>Despesas</p>
-                <TrendingDown className="w-5 h-5" style={{ color: '#EF4444' }} />
+                <p style={{ color: "#94A3B8" }}>Despesas</p>
+                <TrendingDown
+                  className="w-5 h-5"
+                  style={{ color: "#EF4444" }}
+                />
               </div>
-              <p className="mb-1" style={{ color: '#F8FAFC', fontSize: '32px', fontWeight: 700, textShadow: '0 0 20px rgba(239, 68, 68, 0.5)' }}>
-                R$ {stats.expenses.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+              <p
+                className="mb-1"
+                style={{
+                  color: "#F8FAFC",
+                  fontSize: "32px",
+                  fontWeight: 700,
+                  textShadow: "0 0 20px rgba(239, 68, 68, 0.5)",
+                }}
+              >
+                R${" "}
+                {stats.expenses.toLocaleString("pt-BR", {
+                  minimumFractionDigits: 2,
+                })}
               </p>
-              <span style={{ color: '#EF4444', fontSize: '14px' }}>Este mês</span>
+              <span style={{ color: "#EF4444", fontSize: "14px" }}>
+                Este mês
+              </span>
             </GlassCard>
           </motion.div>
 
@@ -177,22 +256,39 @@ export function Dashboard() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <GlassCard variant="strong" className="p-6 relative overflow-hidden">
+            <GlassCard
+              variant="strong"
+              className="p-6 relative overflow-hidden"
+            >
               <div
                 className="absolute top-0 right-0 w-32 h-32 opacity-10"
                 style={{
-                  background: 'radial-gradient(circle, #3B82F6 0%, transparent 70%)',
-                  filter: 'blur(20px)',
+                  background:
+                    "radial-gradient(circle, #3B82F6 0%, transparent 70%)",
+                  filter: "blur(20px)",
                 }}
               />
               <div className="flex items-center justify-between mb-2">
-                <p style={{ color: '#94A3B8' }}>Pendentes</p>
-                <Clock className="w-5 h-5" style={{ color: '#3B82F6' }} />
+                <p style={{ color: "#94A3B8" }}>Pendentes</p>
+                <Clock className="w-5 h-5" style={{ color: "#3B82F6" }} />
               </div>
-              <p className="mb-1" style={{ color: '#F8FAFC', fontSize: '32px', fontWeight: 700, textShadow: '0 0 20px rgba(59, 130, 246, 0.5)' }}>
-                R$ {stats.pending.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+              <p
+                className="mb-1"
+                style={{
+                  color: "#F8FAFC",
+                  fontSize: "32px",
+                  fontWeight: 700,
+                  textShadow: "0 0 20px rgba(59, 130, 246, 0.5)",
+                }}
+              >
+                R${" "}
+                {stats.pending.toLocaleString("pt-BR", {
+                  minimumFractionDigits: 2,
+                })}
               </p>
-              <span style={{ color: '#3B82F6', fontSize: '14px' }}>A pagar</span>
+              <span style={{ color: "#3B82F6", fontSize: "14px" }}>
+                A pagar
+              </span>
             </GlassCard>
           </motion.div>
         </div>
@@ -206,15 +302,29 @@ export function Dashboard() {
             transition={{ delay: 0.5 }}
           >
             <GlassCard className="p-6">
-              <h3 className="mb-6" style={{ color: '#F8FAFC' }}>Receitas vs Despesas</h3>
+              <h3 className="mb-6" style={{ color: "#F8FAFC" }}>
+                Receitas vs Despesas
+              </h3>
               <ResponsiveContainer width="100%" height={300}>
                 <AreaChart data={monthlyData}>
                   <defs>
-                    <linearGradient id="colorReceitas" x1="0" y1="0" x2="0" y2="1">
+                    <linearGradient
+                      id="colorReceitas"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
                       <stop offset="5%" stopColor="#10B981" stopOpacity={0.3} />
                       <stop offset="95%" stopColor="#10B981" stopOpacity={0} />
                     </linearGradient>
-                    <linearGradient id="colorDespesas" x1="0" y1="0" x2="0" y2="1">
+                    <linearGradient
+                      id="colorDespesas"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
                       <stop offset="5%" stopColor="#EF4444" stopOpacity={0.3} />
                       <stop offset="95%" stopColor="#EF4444" stopOpacity={0} />
                     </linearGradient>
@@ -223,10 +333,10 @@ export function Dashboard() {
                   <YAxis stroke="#94A3B8" />
                   <Tooltip
                     contentStyle={{
-                      background: 'rgba(10, 15, 36, 0.9)',
-                      border: '1px solid rgba(255, 255, 255, 0.15)',
-                      borderRadius: '8px',
-                      color: '#F8FAFC',
+                      background: "rgba(10, 15, 36, 0.9)",
+                      border: "1px solid rgba(255, 255, 255, 0.15)",
+                      borderRadius: "8px",
+                      color: "#F8FAFC",
                     }}
                   />
                   <Area
@@ -257,7 +367,9 @@ export function Dashboard() {
             transition={{ delay: 0.5 }}
           >
             <GlassCard className="p-6">
-              <h3 className="mb-6" style={{ color: '#F8FAFC' }}>Distribuição por Categoria</h3>
+              <h3 className="mb-6" style={{ color: "#F8FAFC" }}>
+                Distribuição por Categoria
+              </h3>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                   <Pie
@@ -275,10 +387,10 @@ export function Dashboard() {
                   </Pie>
                   <Tooltip
                     contentStyle={{
-                      background: 'rgba(10, 15, 36, 0.9)',
-                      border: '1px solid rgba(255, 255, 255, 0.15)',
-                      borderRadius: '8px',
-                      color: '#F8FAFC',
+                      background: "rgba(10, 15, 36, 0.9)",
+                      border: "1px solid rgba(255, 255, 255, 0.15)",
+                      borderRadius: "8px",
+                      color: "#F8FAFC",
                     }}
                   />
                 </PieChart>
@@ -290,7 +402,9 @@ export function Dashboard() {
                       className="w-3 h-3 rounded-full"
                       style={{ background: item.color }}
                     />
-                    <span style={{ color: '#94A3B8', fontSize: '14px' }}>{item.name}</span>
+                    <span style={{ color: "#94A3B8", fontSize: "14px" }}>
+                      {item.name}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -305,46 +419,60 @@ export function Dashboard() {
           transition={{ delay: 0.6 }}
         >
           <GlassCard className="p-6">
-            <h3 className="mb-6" style={{ color: '#F8FAFC' }}>Próximos Lançamentos</h3>
+            <h3 className="mb-6" style={{ color: "#F8FAFC" }}>
+              Próximos Lançamentos
+            </h3>
             <div className="space-y-4">
               {upcomingTransactions.map((transaction) => (
                 <div
                   key={transaction.id}
                   className="flex items-center justify-between p-4 rounded-lg"
-                  style={{ background: 'rgba(255, 255, 255, 0.03)' }}
+                  style={{ background: "rgba(255, 255, 255, 0.03)" }}
                 >
                   <div className="flex items-center gap-4">
                     <div
                       className="w-10 h-10 rounded-full flex items-center justify-center"
                       style={{
                         background:
-                          transaction.type === 'income'
-                            ? 'rgba(16, 185, 129, 0.2)'
-                            : 'rgba(239, 68, 68, 0.2)',
+                          transaction.type === "income"
+                            ? "rgba(16, 185, 129, 0.2)"
+                            : "rgba(239, 68, 68, 0.2)",
                       }}
                     >
-                      {transaction.type === 'income' ? (
-                        <TrendingUp className="w-5 h-5" style={{ color: '#10B981' }} />
+                      {transaction.type === "income" ? (
+                        <TrendingUp
+                          className="w-5 h-5"
+                          style={{ color: "#10B981" }}
+                        />
                       ) : (
-                        <TrendingDown className="w-5 h-5" style={{ color: '#EF4444' }} />
+                        <TrendingDown
+                          className="w-5 h-5"
+                          style={{ color: "#EF4444" }}
+                        />
                       )}
                     </div>
                     <div>
-                      <p style={{ color: '#F8FAFC' }}>{transaction.description}</p>
-                      <p style={{ color: '#94A3B8', fontSize: '14px' }}>
-                        {new Date(transaction.date).toLocaleDateString('pt-BR')} • {transaction.category}
+                      <p style={{ color: "#F8FAFC" }}>
+                        {transaction.description}
+                      </p>
+                      <p style={{ color: "#94A3B8", fontSize: "14px" }}>
+                        {new Date(transaction.date).toLocaleDateString("pt-BR")}{" "}
+                        • {transaction.category}
                       </p>
                     </div>
                   </div>
                   <p
                     style={{
-                      color: transaction.type === 'income' ? '#10B981' : '#EF4444',
-                      fontSize: '18px',
+                      color:
+                        transaction.type === "income" ? "#10B981" : "#EF4444",
+                      fontSize: "18px",
                       fontWeight: 600,
                     }}
                   >
-                    {transaction.type === 'income' ? '+' : '-'} R${' '}
-                    {transaction.amount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                    {transaction.type === "income" ? "+" : "-"} R${" "}
+                    {transaction.amount.toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                    })}
                   </p>
                 </div>
               ))}

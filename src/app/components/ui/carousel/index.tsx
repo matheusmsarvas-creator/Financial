@@ -7,7 +7,7 @@ import useEmblaCarousel, {
 } from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import { cn } from "../../utils"; // Ajuste o caminho se necessário
+import { cn } from "../utils"; // Ajuste o caminho se necessário
 import { Button } from "../button"; // Ajuste o caminho para o botão refatorado
 import styles from "./styles.module.css";
 

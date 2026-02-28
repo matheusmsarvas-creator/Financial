@@ -1,7 +1,7 @@
 // Card/index.tsx
 import * as React from "react";
 
-import { cn } from "../../utils"; // Ajuste a rota para a raiz de utils
+import { cn } from "../utils"; // Ajuste a rota para a raiz de utils
 import styles from "./styles.module.css";
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {

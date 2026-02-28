@@ -3,7 +3,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "../../utils"; // Ajuste a rota para a raiz do seu utils
+import { cn } from "../utils"; // Ajuste a rota para a raiz do seu utils
 import styles from "./styles.module.css";
 
 const buttonVariants = cva(

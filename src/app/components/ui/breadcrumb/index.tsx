@@ -3,7 +3,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
 
-import { cn } from "../../utils"; // Ajuste o caminho conforme necessário
+import { cn } from "../utils"; // Ajuste o caminho conforme necessário
 import styles from "./styles.module.css";
 
 function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {

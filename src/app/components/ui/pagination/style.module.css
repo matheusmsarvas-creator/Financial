@@ -1,0 +1,80 @@
+/* Pagination/styles.module.css */
+
+.nav {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem; /* gap-1 */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link {
+  /* O estilo base vem do buttonVariants, 
+     mas garantimos que o cursor seja pointer */
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Espaçamento especial para botões com texto (Prev/Next) */
+.linkWithText {
+  gap: 0.25rem;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+
+@media (min-width: 640px) {
+  .linkPrev {
+    padding-left: 0.625rem;
+  }
+  .linkNext {
+    padding-right: 0.625rem;
+  }
+}
+
+/* Texto que some no mobile */
+.textHidden {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .textHidden {
+    display: block;
+  }
+}
+
+.ellipsis {
+  display: flex;
+  width: 2.25rem; /* size-9 */
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8; /* Gray Blue */
+}
+
+.ellipsisIcon {
+  width: 1rem; /* size-4 */
+  height: 1rem;
+}
+
+/* Acessibilidade */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -4,7 +4,7 @@
 import * as React from "react";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 
-import { cn } from "../../utils"; // Ajuste a rota para a raiz do utils
+import { cn } from "../utils"; // Ajuste a rota para a raiz do utils
 import { buttonVariants } from "../button"; // Ajuste a rota se necessário
 import styles from "./styles.module.css";
 
